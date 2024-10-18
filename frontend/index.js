@@ -23,6 +23,7 @@ function displayPackages(packages) {
         const packageElement = document.createElement('div');
         packageElement.className = 'package';
         packageElement.innerHTML = `
+            <img src="${pkg.imageUrl}" alt="${pkg.name}" class="package-image">
             <h3>${pkg.name}</h3>
             <p>${pkg.description}</p>
             <p>Price: $${pkg.price}</p>
@@ -42,9 +43,10 @@ async function handleFormSubmit(event) {
     const price = parseInt(document.getElementById('package-price').value);
     const duration = parseInt(document.getElementById('package-duration').value);
     const clubsIncluded = document.getElementById('package-clubs').value.split(',').map(club => club.trim());
+    const imageUrl = document.getElementById('package-image').value;
 
     try {
-        await backend.addPackage(name, description, price, duration, clubsIncluded);
+        await backend.addPackage(name, description, price, duration, clubsIncluded, imageUrl);
         alert('Package added successfully!');
         event.target.reset();
         await loadPackages();

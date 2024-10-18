@@ -4,11 +4,12 @@ type HolidayPackage =
    description: text;
    duration: nat;
    id: nat;
+   imageUrl: text;
    name: text;
    price: nat;
  };
 service : {
-  addPackage: (text, text, nat, nat, vec text) -> (nat);
+  addPackage: (text, text, nat, nat, vec text, text) -> (nat);
   getPackage: (nat) -> (opt HolidayPackage) query;
   listPackages: () -> (vec HolidayPackage) query;
 }

@@ -5,11 +5,12 @@ export const idlFactory = ({ IDL }) => {
     'clubsIncluded' : IDL.Vec(IDL.Text),
     'name' : IDL.Text,
     'description' : IDL.Text,
+    'imageUrl' : IDL.Text,
     'price' : IDL.Nat,
   });
   return IDL.Service({
     'addPackage' : IDL.Func(
-        [IDL.Text, IDL.Text, IDL.Nat, IDL.Nat, IDL.Vec(IDL.Text)],
+        [IDL.Text, IDL.Text, IDL.Nat, IDL.Nat, IDL.Vec(IDL.Text), IDL.Text],
         [IDL.Nat],
         [],
       ),

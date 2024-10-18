@@ -8,11 +8,12 @@ export interface HolidayPackage {
   'clubsIncluded' : Array<string>,
   'name' : string,
   'description' : string,
+  'imageUrl' : string,
   'price' : bigint,
 }
 export interface _SERVICE {
   'addPackage' : ActorMethod<
-    [string, string, bigint, bigint, Array<string>],
+    [string, string, bigint, bigint, Array<string>, string],
     bigint
   >,
   'getPackage' : ActorMethod<[bigint], [] | [HolidayPackage]>,
