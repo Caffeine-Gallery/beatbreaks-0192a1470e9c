@@ -1,0 +1,14 @@
+type HolidayPackage = 
+ record {
+   clubsIncluded: vec text;
+   description: text;
+   duration: nat;
+   id: nat;
+   name: text;
+   price: nat;
+ };
+service : {
+  addPackage: (text, text, nat, nat, vec text) -> (nat);
+  getPackage: (nat) -> (opt HolidayPackage) query;
+  listPackages: () -> (vec HolidayPackage) query;
+}
