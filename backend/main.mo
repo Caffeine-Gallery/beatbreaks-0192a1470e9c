@@ -23,7 +23,7 @@ actor TravelAgent {
 
     private var packages = HashMap.HashMap<Nat, HolidayPackage>(0, Nat.equal, Nat.hash);
 
-    public func addPackage(name: Text, description: Text, price: Nat, duration: Nat, clubsIncluded: [Text]): async Nat {
+    public shared func addPackage(name: Text, description: Text, price: Nat, duration: Nat, clubsIncluded: [Text]): async Nat {
         let id = nextId;
         nextId += 1;
 

@@ -13,6 +13,18 @@
     </header>
 
     <main>
+        <section id="add-package">
+            <h2>Add New Holiday Package</h2>
+            <form id="package-form">
+                <input type="text" id="package-name" placeholder="Package Name" required>
+                <textarea id="package-description" placeholder="Package Description" required></textarea>
+                <input type="number" id="package-price" placeholder="Price" required>
+                <input type="number" id="package-duration" placeholder="Duration (days)" required>
+                <input type="text" id="package-clubs" placeholder="Clubs (comma-separated)" required>
+                <button type="submit">Add Package</button>
+            </form>
+        </section>
+
         <section id="packages">
             <h2>Our Holiday Packages</h2>
             <div id="package-list"></div>

@@ -2,12 +2,18 @@ import { backend } from 'declarations/backend';
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const packages = await backend.listPackages();
-        displayPackages(packages);
+        await loadPackages();
     } catch (error) {
         console.error("Error fetching packages:", error);
     }
+
+    document.getElementById('package-form').addEventListener('submit', handleFormSubmit);
 });
+
+async function loadPackages() {
+    const packages = await backend.listPackages();
+    displayPackages(packages);
+}
 
 function displayPackages(packages) {
     const packageList = document.getElementById('package-list');
@@ -26,6 +32,26 @@ function displayPackages(packages) {
         `;
         packageList.appendChild(packageElement);
     });
+}
+
+async function handleFormSubmit(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('package-name').value;
+    const description = document.getElementById('package-description').value;
+    const price = parseInt(document.getElementById('package-price').value);
+    const duration = parseInt(document.getElementById('package-duration').value);
+    const clubsIncluded = document.getElementById('package-clubs').value.split(',').map(club => club.trim());
+
+    try {
+        await backend.addPackage(name, description, price, duration, clubsIncluded);
+        alert('Package added successfully!');
+        event.target.reset();
+        await loadPackages();
+    } catch (error) {
+        console.error("Error adding package:", error);
+        alert('Failed to add package. Please try again.');
+    }
 }
 
 window.requestInfo = function(packageId) {
